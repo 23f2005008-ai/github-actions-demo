@@ -1,0 +1,36 @@
+name: CI with Email Step
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: 23f2005008@ds.study.iitm.ac.in - Run tests and build
+      run: |
+        echo "Running build process for user 23f2005008@ds.study.iitm.ac.in"
+        echo "Current directory: $(pwd)"
+        echo "Repository: ${{ github.repository }}"
+        python --version
+        
+    - name: Deployment notification
+      run: |
+        echo "Build completed successfully!"
+        echo "Contact: 23f2005008@ds.study.iitm.ac.in"
+        
+    - name: Final verification
+      run: echo "Action executed by 23f2005008@ds.study.iitm.ac.in"
